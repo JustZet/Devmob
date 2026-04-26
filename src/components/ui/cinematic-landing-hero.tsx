@@ -4,6 +4,7 @@ import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { cn } from "@/lib/utils";
+import { Logo, LogoMark } from "@/components/ui/logo";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
@@ -365,8 +366,12 @@ export function CinematicHero({
 
           <div className="relative w-full h-full max-w-7xl mx-auto px-4 lg:px-12 flex flex-col justify-evenly lg:grid lg:grid-cols-3 items-center lg:gap-8 z-10 py-6 lg:py-0">
 
-            <div className="card-right-text gsap-reveal order-1 lg:order-3 flex justify-center lg:justify-end z-20 w-full">
-              <h2 className="text-6xl md:text-[6rem] lg:text-[8rem] font-black uppercase tracking-tighter text-card-silver-matte lg:mt-0">
+            <div className="card-right-text gsap-reveal order-1 lg:order-3 flex flex-col items-center lg:items-end justify-center z-20 w-full gap-3 lg:gap-4">
+              <LogoMark
+                size={96}
+                className="text-white drop-shadow-[0_12px_24px_rgba(0,0,0,0.8)] md:!w-[140px] md:!h-[140px] lg:!w-[180px] lg:!h-[180px]"
+              />
+              <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-black uppercase tracking-tighter text-card-silver-matte leading-none">
                 {brandName}
               </h2>
             </div>
@@ -397,7 +402,9 @@ export function CinematicHero({
                           <span className="text-[10px] text-neutral-400 uppercase tracking-widest font-bold mb-1">Build</span>
                           <span className="text-xl font-bold tracking-tight text-white drop-shadow-md">Devmob</span>
                         </div>
-                        <div className="w-9 h-9 rounded-full bg-white/5 text-neutral-200 flex items-center justify-center font-bold text-sm border border-white/10 shadow-lg shadow-black/50">DM</div>
+                        <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10 shadow-lg shadow-black/50">
+                          <LogoMark size={20} className="text-white" />
+                        </div>
                       </div>
 
                       <div className="phone-widget relative w-44 h-44 mx-auto flex items-center justify-center mb-8 drop-shadow-[0_15px_25px_rgba(0,0,0,0.8)]">

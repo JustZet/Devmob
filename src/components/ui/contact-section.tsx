@@ -4,12 +4,13 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail, Send, Copy, Check, ArrowUpRight } from "lucide-react";
+import { LogoMark } from "@/components/ui/logo";
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const CONTACT_EMAIL = "devmobplatform@gmail.com";
+const CONTACT_EMAIL = "contact@devmob.app";
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -207,9 +208,12 @@ export function ContactSection() {
           </div>
         </div>
 
-        <p className="contact-detail text-xs text-muted-foreground/70 mt-10" suppressHydrationWarning>
-          © {new Date().getFullYear()} Devmob — Mobile app development.
-        </p>
+        <div className="contact-detail flex flex-col items-center gap-3 mt-10">
+          <LogoMark size={28} className="text-white/30" />
+          <p className="text-xs text-muted-foreground/70" suppressHydrationWarning>
+            © {new Date().getFullYear()} Devmob — Mobile app development.
+          </p>
+        </div>
       </div>
     </section>
   );
