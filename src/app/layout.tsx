@@ -44,6 +44,12 @@ export const metadata: Metadata = {
   verification: {
     google: "afcf8a5bda80306e",
   },
+  // Tell Dark Reader (and similar) to leave this page alone — we manage
+  // light/dark ourselves. This eliminates extension-induced hydration noise.
+  other: {
+    "darkreader-lock": "",
+    "color-scheme": "light dark",
+  },
 };
 
 export default function RootLayout({
@@ -52,8 +58,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans bg-background text-foreground`}>
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Tell Dark Reader & similar extensions to leave this page alone */}
+        <meta name="darkreader-lock" />
+      </head>
+      <body
+        className={`${inter.variable} font-sans bg-background text-foreground`}
+        suppressHydrationWarning
+      >
         {children}
       </body>
     </html>

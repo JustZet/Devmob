@@ -154,9 +154,9 @@ export function ContactSection() {
         className="contact-orb absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] pointer-events-none"
         aria-hidden="true"
       >
-        <div className="absolute inset-0 rounded-full bg-blue-500/[0.12] blur-[120px] animate-blob" />
-        <div className="absolute inset-10 rounded-full bg-indigo-500/[0.10] blur-[100px] animate-blob [animation-delay:-4s]" />
-        <div className="absolute inset-24 rounded-full bg-cyan-500/[0.06] blur-[80px] animate-blob [animation-delay:-8s]" />
+        <div className="absolute inset-0 rounded-full bg-primary/[0.18] dark:bg-blue-500/[0.12] blur-[120px] animate-blob" />
+        <div className="absolute inset-10 rounded-full bg-primary/[0.12] dark:bg-indigo-500/[0.10] blur-[100px] animate-blob [animation-delay:-4s]" />
+        <div className="absolute inset-24 rounded-full bg-primary/[0.08] dark:bg-cyan-500/[0.06] blur-[80px] animate-blob [animation-delay:-8s]" />
       </div>
 
       <div className="relative max-w-5xl mx-auto text-center">
@@ -179,7 +179,7 @@ export function ContactSection() {
           className="contact-card glass-surface relative mx-auto max-w-3xl rounded-3xl p-8 md:p-10 overflow-hidden group text-left"
           style={{
             backgroundImage:
-              "radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), hsl(217 91% 60% / 0.08), transparent 40%)",
+              "radial-gradient(600px circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.10), transparent 40%)",
           }}
         >
           {/* Card sheen overlay */}
@@ -187,8 +187,7 @@ export function ContactSection() {
             className="absolute inset-0 pointer-events-none rounded-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"
             style={{
               background:
-                "radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), hsl(0 0% 100% / 0.05), transparent 40%)",
-              mixBlendMode: "screen",
+                "radial-gradient(400px circle at var(--mx, 50%) var(--my, 50%), hsl(var(--primary) / 0.06), transparent 40%)",
             }}
             aria-hidden="true"
           />
@@ -205,11 +204,11 @@ export function ContactSection() {
                 </span>
                 <a
                   href={`mailto:${CONTACT_EMAIL}?subject=Project%20inquiry%20%E2%80%94%20Devmob`}
-                  className="group/email relative text-xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground hover:text-primary-foreground transition-colors break-all md:break-normal"
+                  className="group/email relative text-xl md:text-3xl lg:text-4xl font-bold tracking-tight text-foreground hover:text-primary transition-colors break-all md:break-normal"
                 >
                   <span className="relative">
                     {CONTACT_EMAIL}
-                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-primary to-cyan-400 group-hover/email:w-full transition-all duration-500" />
+                    <span className="absolute left-0 -bottom-1 h-[2px] w-0 bg-gradient-to-r from-primary to-primary/40 group-hover/email:w-full transition-all duration-500" />
                   </span>
                 </a>
                 <button
@@ -220,7 +219,7 @@ export function ContactSection() {
                 >
                   {copied ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-400" strokeWidth={2.5} />
+                      <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" strokeWidth={2.5} />
                       <span>Copied to clipboard</span>
                     </>
                   ) : (
@@ -237,7 +236,7 @@ export function ContactSection() {
             <div className="contact-detail flex md:hidden flex-col gap-3 w-full">
               <a
                 href={`mailto:${CONTACT_EMAIL}?subject=Project%20inquiry%20%E2%80%94%20Devmob&body=Hi%20Devmob%20team%2C%0A%0AI%27d%20like%20to%20talk%20about%20a%20mobile%20app%20project%3A%0A%0A-%20Platform(s)%3A%20%0A-%20Brief%20description%3A%20%0A-%20Timeline%3A%20%0A%0AThanks%21`}
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-foreground text-background font-semibold text-sm shadow-[0_10px_30px_-5px_hsl(0_0%_100%/0.25)] active:translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-foreground text-background font-semibold text-sm shadow-[0_10px_30px_-5px_hsl(var(--foreground)/0.25)] active:translate-y-0.5 transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
               >
                 <Send className="w-4 h-4" strokeWidth={2.5} />
                 Send us an email
@@ -247,11 +246,11 @@ export function ContactSection() {
                 type="button"
                 onClick={onCopy}
                 aria-label="Copy email address"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-white/[0.06] hover:bg-white/[0.1] border border-border-strong text-foreground font-semibold text-sm backdrop-blur transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
+                className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-foreground/5 hover:bg-foreground/10 border border-border-strong text-foreground font-semibold text-sm backdrop-blur transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background"
               >
                 {copied ? (
                   <>
-                    <Check className="w-4 h-4 text-emerald-400" strokeWidth={2.5} />
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" strokeWidth={2.5} />
                     Copied!
                   </>
                 ) : (
@@ -347,7 +346,7 @@ export function ContactSection() {
                 <button
                   type="submit"
                   disabled={status === "sending" || status === "success"}
-                  className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-foreground text-background font-semibold text-sm shadow-[0_10px_30px_-5px_hsl(0_0%_100%/0.25)] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-10px_hsl(0_0%_100%/0.4)] transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                  className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl bg-foreground text-background font-semibold text-sm shadow-[0_10px_30px_-5px_hsl(var(--foreground)/0.25)] hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-10px_hsl(var(--foreground)/0.4)] transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background disabled:opacity-60 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
                   {status === "sending" ? (
                     <>
@@ -356,7 +355,7 @@ export function ContactSection() {
                     </>
                   ) : status === "success" ? (
                     <>
-                      <Check className="w-4 h-4 text-emerald-600" strokeWidth={2.5} />
+                      <Check className="w-4 h-4 text-emerald-400 dark:text-emerald-600" strokeWidth={2.5} />
                       Message sent
                     </>
                   ) : (
@@ -369,14 +368,14 @@ export function ContactSection() {
                 </button>
 
                 {status === "success" && (
-                  <p className="text-sm text-emerald-400 flex items-center gap-2 animate-in fade-in slide-in-from-left-2 duration-500">
+                  <p className="text-sm text-emerald-600 dark:text-emerald-400 flex items-center gap-2 animate-in fade-in slide-in-from-left-2 duration-500">
                     <Check className="w-4 h-4" strokeWidth={2.5} />
                     Thanks! We&apos;ll reply within 1 business day.
                   </p>
                 )}
 
                 {status === "error" && (
-                  <p className="text-sm text-red-400 flex items-start gap-2 animate-in fade-in slide-in-from-left-2 duration-500">
+                  <p className="text-sm text-red-600 dark:text-red-400 flex items-start gap-2 animate-in fade-in slide-in-from-left-2 duration-500">
                     <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" strokeWidth={2.5} />
                     <span>{errorMessage}</span>
                   </p>
