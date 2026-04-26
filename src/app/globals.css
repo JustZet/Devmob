@@ -4,35 +4,49 @@
 
 @layer base {
   :root {
-    --background: 222 47% 5%;
-    --foreground: 210 40% 98%;
+    /* === Backgrounds — refined neutral slate with subtle warm undertone === */
+    --background: 222 28% 5%;          /* #0A0D14 — deep, less plastic-blue */
+    --foreground: 210 22% 96%;         /* #F2F4F7 — slightly warm white */
 
-    --card: 222 47% 7%;
-    --card-foreground: 210 40% 98%;
+    /* Surfaces */
+    --card: 222 24% 8%;                /* #10131C — elevated surface */
+    --card-foreground: 210 22% 96%;
+    --popover: 222 24% 8%;
+    --popover-foreground: 210 22% 96%;
+    --surface-elevated: 222 22% 11%;   /* #15192A — modals, hover */
+    --surface-overlay: 222 22% 14%;    /* #1B2034 — focused state */
 
-    --popover: 222 47% 7%;
-    --popover-foreground: 210 40% 98%;
+    /* Brand accents — keep blue identity, but more refined */
+    --primary: 217 91% 60%;            /* #3B82F6 — brand blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-subtle: 217 91% 70%;     /* #5B9BFF — for secondary accents */
 
-    --primary: 217 91% 60%;
-    --primary-foreground: 222 47% 5%;
+    /* Sophisticated secondary (subtle indigo) */
+    --secondary: 222 22% 13%;
+    --secondary-foreground: 210 22% 96%;
 
-    --secondary: 217 33% 17%;
-    --secondary-foreground: 210 40% 98%;
+    --muted: 222 20% 11%;              /* #14182A */
+    --muted-foreground: 215 15% 72%;   /* #A6B0BF — improved readability vs old 65% */
 
-    --muted: 217 33% 17%;
-    --muted-foreground: 215 20% 65%;
+    --accent: 222 22% 13%;
+    --accent-foreground: 210 22% 96%;
 
-    --accent: 217 33% 17%;
-    --accent-foreground: 210 40% 98%;
+    /* Subtle warm accent for premium highlights — use sparingly */
+    --accent-warm: 38 92% 65%;         /* #F2C35E — refined gold */
 
-    --destructive: 0 63% 45%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status */
+    --destructive: 0 70% 55%;          /* #DC4747 — softer red */
+    --destructive-foreground: 0 0% 100%;
+    --success: 156 64% 50%;            /* #2FCC8B — refined emerald */
 
-    --border: 217 33% 17%;
-    --input: 217 33% 17%;
+    /* Borders & inputs — more subtle */
+    --border: 222 20% 14%;             /* #1B2032 — almost invisible, professional */
+    --border-strong: 222 18% 22%;      /* #2A3045 — for inputs, focus rings */
+    --input: 222 20% 14%;
     --ring: 217 91% 60%;
 
-    --color-foreground: #f8fafc;
+    /* Used by injected styles in cinematic-hero */
+    --color-foreground: #f2f4f7;
 
     --radius: 0.75rem;
   }
@@ -45,13 +59,69 @@
   html, body {
     @apply bg-background text-foreground;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
   body {
-    font-feature-settings: "rlig" 1, "calt" 1;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+    /* Subtle gradient warmth in background */
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -20%, hsl(217 91% 60% / 0.06), transparent 70%),
+      radial-gradient(ellipse 60% 40% at 50% 120%, hsl(239 84% 67% / 0.04), transparent 60%);
+    background-attachment: fixed;
+  }
+
+  /* Refined headings — tighter tracking, better hierarchy */
+  h1, h2, h3, h4 {
+    letter-spacing: -0.02em;
+    font-feature-settings: "ss01" 1, "cv01" 1, "cv11" 1;
+  }
+
+  /* Refined inputs default styling */
+  input, textarea {
+    @apply bg-transparent;
+  }
+  input::placeholder, textarea::placeholder {
+    @apply text-muted-foreground/60;
+  }
+
+  /* Selection uses brand color subtly */
+  ::selection {
+    background-color: hsl(217 91% 60% / 0.25);
+    color: hsl(210 22% 99%);
   }
 }
 
 /* Utility for transform-style preserve-3d (used by component) */
 .transform-style-3d {
   transform-style: preserve-3d;
+}
+
+/* Premium glass surface — used by form & card elements */
+.glass-surface {
+  background: linear-gradient(
+    180deg,
+    hsl(222 24% 10% / 0.6) 0%,
+    hsl(222 24% 8% / 0.6) 100%
+  );
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid hsl(222 20% 18% / 0.6);
+  box-shadow:
+    0 30px 60px -20px hsl(0 0% 0% / 0.5),
+    inset 0 1px 0 hsl(0 0% 100% / 0.04);
+}
+
+.glass-input {
+  background: hsl(222 22% 10% / 0.5);
+  border: 1px solid hsl(222 20% 18% / 0.8);
+  transition: all 0.2s ease;
+}
+.glass-input:hover {
+  border-color: hsl(222 18% 24% / 0.9);
+}
+.glass-input:focus {
+  outline: none;
+  border-color: hsl(217 91% 60% / 0.6);
+  box-shadow: 0 0 0 3px hsl(217 91% 60% / 0.12);
+  background: hsl(222 22% 11% / 0.7);
 }
